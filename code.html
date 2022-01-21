@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>APP NAME by Nick Seyler</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!--Google Font CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+    <!-- Font Awesome JS-->
+    <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.jpg" />
+
+    <!-- Prism CSS-->
+    <link href="/css/prism.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="/css/site.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Nav -->
+    <nav class="navbar navbarBG navbar-expand-md navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="/img/NSDarkLogo.jpg" height="24" class="d-inline-block align-text-top px-2" />
+                APP NAME
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="app.html">The App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://nickseyler-portfolio.netlify.app/">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="flex-shrink-0">
+        <div class="container mt-5 px-5">
+            <h2 class="border-1 border-bottom border-dark">The Code</h2>
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-js">
+                            //Display message to the user
+                            function getMessage(){
+                                let userMessage = document.getElementById("message").value;
+                                Swal.fire(
+                                    'The App Title',
+                                    userMessage,
+                                    'success'
+                                );
+                            }                       
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <p>The code is structured in one function.
+                        It accesses the user's input then displays a Sweetalert alert window.</p>
+                    <h5>getMessage</h5>
+                    <p>Prints the user's inputted message.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 sticky-footer">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-xl-2 gy-2">
+                <div class="col d-flex justify-content-center justify-content-xl-start order-last order-xl-first">
+                    <div>
+                        <span>&copy;2022</span><span> Nick Seyler | <a
+                                href=mailto:nickseyler25@gmail.com>nickseyler25@gmail.com</a></span>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center justify-content-xl-end">
+                    <div class="row">
+                        <div class="col social">
+                            <a href="https://www.linkedin.com/in/nickseyler/"><i class="fab fa-linkedin fa-lg"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col social">
+                            <a href=https://github.com/NickSeyler> <i class="fab fa-github fa-lg"
+                                aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+
+    <!-- Prism JS -->
+    <script src="/js/prism.js"></script>
+</body>
+
+</html>

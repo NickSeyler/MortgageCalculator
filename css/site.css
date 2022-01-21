@@ -1,0 +1,115 @@
+:root {
+    --ns-header-font: 'Barlow Condensed', sans-serif;
+    --ns-body-font: 'Roboto', sans-serif;
+    --ns-secondary-color: #45596b;
+    --ns-light-color: #bcbecf;
+    --ns-dark-color: #0f0d0d;
+    --ns-primary-color: #381313;
+    --font-size: 1.2rem;
+}
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+    font-family: var(--ns-header-font);
+}
+
+body {
+    font-family: var(--ns-body-font);
+    font-size: var(--font-size);
+    color: var(--ns-dark-color);
+    background-color: var(--ns-light-color);
+    --webkit-text-size-adjust: 100%;
+}
+
+main>.container {
+    padding: 60px 15px 0;
+    margin-bottom: 5rem;
+    min-height: 90vh;
+}
+
+/*Navbar Styles*/
+.navbarBG{
+    background-color: var(--ns-dark-color);
+}
+
+/*Icon Styles*/
+.jsicon{
+    color: #e2d304;
+}
+
+.bsicon{
+    color: #800080;
+}
+
+.htmlicon{
+    color: #ff4500;
+}
+
+.cssicon{
+    color: #0b52d6;
+}
+
+.checklisticon{
+    color: var(--ns-secondary-color);
+}
+
+/* Bootstrap btn Override */
+.btn-primary {
+    color: var(--ns-light-color);
+    background-color: var(--ns-secondary-color) !important;
+    border-color: var(--ns-secondary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:visited {
+    filter: brightness(1.1);
+    border-color: var(--ns-secondary-color);
+}
+
+.btn-outline-primary{
+    color: var(--ns-dark-color);
+    border-color: var(--ns-secondary-color);
+}
+
+.btn-outline-primary:hover, 
+.btn-outline-primary:active,
+.btn-outline-primary:focus{
+    border-color: var(--ns-primary-color);
+    background-color: var(--ns-secondary-color);
+}
+
+/*Footer Styles*/
+.footer{
+    color: var(--ns-light-color);
+    background-color: var(--ns-dark-color);
+    padding-right: 1rem;
+}
+
+.sticky-footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .social > a{
+    color: var(--ns-light-color);
+    opacity: .75;
+}
+
+footer .social >a:hover{
+    color: var(--ns-secondary-color);
+    opacity: .90;
+}
