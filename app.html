@@ -90,19 +90,19 @@
                     <div class="row h-50">
                         <div class="col-12">
                             <h1 class="text-center">Your Monthly Payments</h1>
-                            <h2 class="text-center">$100.00</h2>
+                            <h2 id = "monthlyPayment" class="text-center">---</h2>
                         </div>
                     </div>
                     <div class="row h-50 align-items-end">
                         <div class="col">
-                            <div>Total Principle: </div>
+                            <div>Total Principal: </div>
                             <div>Total Interest: </div>
                             <div>Total Cost: </div>
                         </div>
                         <div class="col">
-                            <div id="totalPrinciple">$100</div>
-                            <div id="totalInterest">$100</div>
-                            <div id="totalCost">$100</div>
+                            <div id="totalPrincipal">-</div>
+                            <div id="totalInterest">-</div>
+                            <div id="totalCost">-</div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                             <th>Balance</th>
                         </tr>
                     </thead>
-                    <tbody id="bookDataBody">
+                    <tbody id="paymentDataBody">
                         <!-- Data -->
                     </tbody>
                 </table>
@@ -151,6 +151,18 @@
         </div>
     </footer>
 
+    <!-- Templates -->
+    <template id="paymentData-template">
+        <tr>
+            <td data-id="month"></td>
+            <td data-id="payment"></td>
+            <td data-id="principal"></td>
+            <td data-id="interest"></td>
+            <td data-id="totalInterest"></td>
+            <td data-id="balance"></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
@@ -162,7 +174,7 @@
     <!-- Custom JS -->
     <script src="/js/site.js"></script>
     <script>
-        document.getElementById("btnCalculate").addEventListener("click", getMessage);
+        document.getElementById("btnCalculate").addEventListener("click", getValues);
     </script>
 </body>
 
