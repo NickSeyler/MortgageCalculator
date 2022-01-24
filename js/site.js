@@ -32,11 +32,10 @@ function getValues(){
 function generatePayments(loanAmount, payments, rate){
     let paymentObjectArray = [];
     
-    //"constants"
+    //constants
     let payment = (loanAmount) * (rate/1200) / (1- Math.pow((1 + rate/1200),-payments));
     let interest = loanAmount * rate/1200;
 
-    
     //starting data
     let balance = loanAmount;
 
@@ -44,16 +43,17 @@ function generatePayments(loanAmount, payments, rate){
     let principal = 0;
     let totalInterest = 0;
 
-    //iterate through the array
-    for (let i = 1; i <= payments; i++){
+    //iterate
+    for (let month = 1; month <= payments; month++){
+        //calculations
         principal = payment - interest;
         totalInterest += interest;
         balance -= principal;
-
         if (balance < 0){
             balance = 0;
         }
 
+        //set the data
         let paymentObject = {};
 
         paymentObject["month"] = i;
@@ -62,8 +62,10 @@ function generatePayments(loanAmount, payments, rate){
         paymentObject["interest"] = interest;
         paymentObject["totalInterest"] = totalInterest;
         paymentObject["balance"] = balance;
+
         paymentObjectArray.push(paymentObject);
 
+        //do this calculation after pushing data
         interest = balance * rate/1200;
     }
 
@@ -113,7 +115,7 @@ function displayPayments(paymentObjectArray, loanAmount){
     let totalInterest = document.getElementById("totalInterest");
     let totalCost = document.getElementById("totalCost");
 
-    //replace the data from the second column
+    //replace the other data
     monthlyPayment.innerHTML = currencyFormatter.format(finalPaymentObject.payment);
     totalPrincipal.innerHTML = currencyFormatter.format(loanAmount);
     totalInterest.innerHTML = currencyFormatter.format(finalPaymentObject.totalInterest);
