@@ -81,7 +81,7 @@ function displayPayments(paymentObjectArray, loanAmount){
     paymentDataBody.innerHTML="";
 
 
-    currencyFormatter = new Intl.NumberFormat('en-US', {
+    let currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     })
