@@ -56,7 +56,7 @@ function generatePayments(loanAmount, payments, rate){
         //set the data
         let paymentObject = {};
 
-        paymentObject["month"] = i;
+        paymentObject["month"] = month;
         paymentObject["payment"] = payment;
         paymentObject["principal"] = principal;
         paymentObject["interest"] = interest;
