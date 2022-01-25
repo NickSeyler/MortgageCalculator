@@ -64,29 +64,165 @@
     <main class="flex-shrink-0">
         <div class="container mt-5 px-5">
             <h2 class="border-1 border-bottom border-dark">The Code</h2>
+
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-js">
-                            //Display message to the user
-                            function getMessage(){
-                                let userMessage = document.getElementById("message").value;
-                                Swal.fire(
-                                    'The App Title',
-                                    userMessage,
-                                    'success'
-                                );
-                            }                       
+                            //Get values
+                            function getValues(){
+                                let loanAmount = document.getElementById("loanAmount").value;
+                                let payments = document.getElementById("payments").value;
+                                let rate = document.getElementById("rate").value;
+
+                                loanAmount = parseFloat(loanAmount);
+                                payments = parseInt(payments);
+                                rate = parseFloat (rate);
+
+                                //validate input
+
+                                if (!isNaN(loanAmount) && !isNaN(payments) && !isNaN(rate)) {
+                                    let paymentObjectArray = generatePayments(loanAmount, payments, rate);
+                                    displayPayments(paymentObjectArray, loanAmount);
+                                }
+                                else{
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Only numbers are allowed in the loan calculator'
+                                    });
+                                }
+                            }                  
                         </code>
                     </pre>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <p>The code is structured in one function.
-                        It accesses the user's input then displays a Sweetalert alert window.</p>
-                    <h5>getMessage</h5>
-                    <p>Prints the user's inputted message.</p>
+                    <h5>getValues</h5>
+                    <p>Get the values input by the user and validate them.</p>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-js">
+                            //Generate the data based on the loan amount, amount of payments, and interest rate
+                            function generatePayments(loanAmount, payments, rate){
+                                let paymentObjectArray = [];
+                                
+                                //constants
+                                let payment = (loanAmount) * (rate/1200) / (1- Math.pow((1 + rate/1200),-payments));
+                                let interest = loanAmount * rate/1200;
+
+                                //starting data
+                                let balance = loanAmount;
+
+                                //initializers
+                                let principal = 0;
+                                let totalInterest = 0;
+
+                                //iterate
+                                for (let month = 1; month &lt;= payments; month++){
+                                    //calculations
+                                    principal = payment - interest;
+                                    totalInterest += interest;
+                                    balance -= principal;
+                                    if (balance &lt; 0){
+                                        balance = 0;
+                                    }
+
+                                    //set the data
+                                    let paymentObject = {};
+
+                                    paymentObject["month"] = month;
+                                    paymentObject["payment"] = payment;
+                                    paymentObject["principal"] = principal;
+                                    paymentObject["interest"] = interest;
+                                    paymentObject["totalInterest"] = totalInterest;
+                                    paymentObject["balance"] = balance;
+
+                                    paymentObjectArray.push(paymentObject);
+
+                                    //do this calculation after pushing data
+                                    interest = balance * rate/1200;
+                                }
+
+                                return paymentObjectArray;
+                            }            
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h5>generatePayments</h5>
+                    <p>
+                        Generate the data based on the loan amount, 
+                        amount of payments, and interest rate
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-js">
+                            //Display the data
+                            function displayPayments(paymentObjectArray, loanAmount){
+                                //Get the template and data
+                                let template = document.getElementById("paymentData-template");
+                                let paymentDataBody = document.getElementById("paymentDataBody");
+                                //clear the data
+                                paymentDataBody.innerHTML="";
+
+
+                                let currencyFormatter = new Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                })
+
+                                //iterate through the array
+                                for (let i = 0; i &lt; paymentObjectArray.length; i++){
+                                    //get the tr element from the template
+                                    let paymentRow = document.importNode(template.content, true);
+                                    //get an array of td elements from the tr element
+                                    let paymentCols = paymentRow.querySelectorAll("td");
+
+                                    //put the data into the td elements
+                                    paymentCols[0].textContent = paymentObjectArray[i].month;
+                                    paymentCols[1].textContent = currencyFormatter.format(paymentObjectArray[i].payment);
+                                    paymentCols[2].textContent = currencyFormatter.format(paymentObjectArray[i].principal);
+                                    paymentCols[3].textContent = currencyFormatter.format(paymentObjectArray[i].interest);
+                                    paymentCols[4].textContent = currencyFormatter.format(paymentObjectArray[i].totalInterest);
+                                    paymentCols[5].textContent = currencyFormatter.format(paymentObjectArray[i].balance);
+
+                                    //append the data
+                                    paymentDataBody.appendChild(paymentRow);
+                                }
+
+
+                                let finalPaymentObject = paymentObjectArray[paymentObjectArray.length - 1];
+
+                                let monthlyPayment = document.getElementById("monthlyPayment");
+                                let totalPrincipal = document.getElementById("totalPrincipal");
+                                let totalInterest = document.getElementById("totalInterest");
+                                let totalCost = document.getElementById("totalCost");
+
+                                //replace the other data
+                                monthlyPayment.innerHTML = currencyFormatter.format(finalPaymentObject.payment);
+                                totalPrincipal.innerHTML = currencyFormatter.format(loanAmount);
+                                totalInterest.innerHTML = currencyFormatter.format(finalPaymentObject.totalInterest);
+                                totalCost.innerHTML = currencyFormatter.format(loanAmount + finalPaymentObject.totalInterest);
+                            }
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h5>displayPayments</h5>
+                    <p>
+                        Display the data to the webpage, including the total cost.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </main>
 

@@ -23,7 +23,6 @@ function getValues(){
             text: 'Only numbers are allowed in the loan calculator'
         });
     }
-     
 }
 
 //Expected input: float (currency), int, float (currency)
