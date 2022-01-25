@@ -8,4 +8,4 @@ the **required monthly payments** and the
 **total cost** of the loan.
 
 ## Demo The Project
-[nickseyler-mortgagecalculator.netlify.app](nickseyler-mortgagecalculator.netlify.app)
+[https://nickseyler-mortgagecalculator.netlify.app](https://nickseyler-mortgagecalculator.netlify.app)
