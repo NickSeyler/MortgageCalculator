@@ -38,25 +38,25 @@ main>.container {
 }
 
 /*Navbar Styles*/
-.navbarBG{
+.navbarBG {
     background-color: var(--ns-dark-color);
 }
 
 /*Icon Styles*/
-.jsicon{
-    color: #e2d304;
+.jsicon {
+    color: #948a08;
 }
 
-.bsicon{
-    color: #800080;
+.bsicon {
+    color: #560556;
 }
 
-.htmlicon{
-    color: #ff4500;
+.htmlicon {
+    color: #a63105;
 }
 
-.cssicon{
-    color: #0b52d6;
+.cssicon {
+    color: #0c398c;
 }
 
 .checklisticon{
