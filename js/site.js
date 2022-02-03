@@ -31,7 +31,7 @@ function getValues(){
 function generatePayments(loanAmount, payments, rate){
     let paymentObjectArray = [];
     
-    //constants
+    //initializers (by input formula)
     let payment = (loanAmount) * (rate/1200) / (1- Math.pow((1 + rate/1200),-payments));
     let interest = loanAmount * rate/1200;
 

@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-12 col-lg-4">
                     <h5>getValues</h5>
-                    <p>Get the values input by the user and validate them.</p>
+                    <p>Get the values entered by the user and validate them.</p>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
                             function generatePayments(loanAmount, payments, rate){
                                 let paymentObjectArray = [];
                                 
-                                //constants
+                                //initializers (by input formula)
                                 let payment = (loanAmount) * (rate/1200) / (1- Math.pow((1 + rate/1200),-payments));
                                 let interest = loanAmount * rate/1200;
 
@@ -155,8 +155,8 @@
                 <div class="col-12 col-lg-4">
                     <h5>generatePayments</h5>
                     <p>
-                        Generate the data based on the loan amount, 
-                        amount of payments, and interest rate
+                        Generate the required data based on the loan amount, 
+                        amount of payments, and interest rate as entered by the user.
                     </p>
                 </div>
             </div>
@@ -218,7 +218,7 @@
                 <div class="col-12 col-lg-4">
                     <h5>displayPayments</h5>
                     <p>
-                        Display the data to the webpage, including the total cost.
+                        Cleanly display all the data to the webpage.
                     </p>
                 </div>
             </div>
